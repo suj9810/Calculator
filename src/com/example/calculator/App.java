@@ -5,15 +5,32 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num1, num2, result;
+        int num1 = 0, num2 = 0, result;
         String str;
         char operator = 0;
         boolean check = true;
         while (check) {
             System.out.println("은주의 계산기");
-            System.out.println("첫 번째 숫자를 입력하세요 : ");
-            num1 = sc.nextInt();
-            sc.nextLine();
+
+            // 첫 번째 숫자 입력 (양의 정수만 허용)
+            while (true) {
+                System.out.print("첫 번째 숫자를 입력하세요 (양의 정수만 입력 가능): ");
+                if (sc.hasNextInt()) {
+                    num1 = sc.nextInt();
+                    if (num1 >= 0) {
+                        break; // 양의 정수일 경우 반복 종료
+                    } else {
+                        System.out.println("양의 정수를 입력해주세요.");
+                    }
+                } else {
+                    System.out.println("숫자를 입력해주세요.");
+                    sc.next(); // 잘못된 입력 제거
+                }
+            }
+
+            sc.nextLine(); // 버퍼 비우기
+
+            // 사칙연산 기호 입력
             boolean nonOperator = false;
             while (!nonOperator) {
                 System.out.print("사칙연산 기호(➕,➖,✖,➗)를 입력하세요 : ");
@@ -32,8 +49,21 @@ public class App {
                 }
             }
 
-            System.out.print("두 번째 숫자를 입력하세요 : ");
-            num2 = sc.nextInt();
+            // 두 번째 숫자 입력 (양의 정수만 허용)
+            while (true) {
+                System.out.print("두 번째 숫자를 입력하세요 (양의 정수만 입력 가능): ");
+                if (sc.hasNextInt()) {
+                    num2 = sc.nextInt();
+                    if (num2 >= 0) {
+                        break; // 양의 정수일 경우 반복 종료
+                    } else {
+                        System.out.println("양의 정수를 입력해주세요.");
+                    }
+                } else {
+                    System.out.println("숫자를 입력해주세요.");
+                    sc.next(); // 잘못된 입력 제거
+                }
+            }
 
             switch (operator) {
                 case '+':
