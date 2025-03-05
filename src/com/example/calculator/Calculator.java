@@ -3,11 +3,8 @@ package com.example.calculator;
 import java.util.Scanner;
 
 public class Calculator {
-    Scanner sc = new Scanner(System.in);
-    CalculatorRecord CalculatorRecord = new CalculatorRecord();
     double num1 = 0, num2 = 0, result = 0;
     char operator = 0;
-    boolean check = true;
 
     public Calculator(double num1, double num2, char operator) {
         this.num1 = num1;
