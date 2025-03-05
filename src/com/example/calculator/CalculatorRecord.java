@@ -8,14 +8,13 @@ public class CalculatorRecord {
     private ArrayList<Character> operators = new ArrayList<>();
     private ArrayList<Double> results = new ArrayList<>();
 
-    //getter
     public Double getResults(int index) {
         if (index >= 0 && index < results.size()){
             return results.get(index);
         }
         return null;
     }
-    //setter
+
     public void setResults(int index, double result) {
         if (index >= 0 && index < results.size()){
             results.set(index, result);
