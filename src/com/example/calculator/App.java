@@ -7,6 +7,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         CalculatorRecord calculatorRecord = new CalculatorRecord();
         Calculator calculator = new Calculator();
+//        OperatorType operatorType =
         double num1 = 0, num2 = 0, result = 0;
         String str;
         char operator = 0;
@@ -29,7 +30,9 @@ public class App {
                     operator = getOperator(sc);
                     num2 = getNumber(sc, "두 번째 ");
                     try {
-                        result = calculator.getValidOperator(num1, num2, operator);
+                        String s = String.valueOf(operator);
+                        OperatorType operatorType = OperatorType.findValidatedSymbol(s);
+                        result = operatorType.operate(num1, num2);
                         System.out.println("결과 : " + result);
                         calculatorRecord.saveCalculation(num1, num2, operator, result);
                     } catch (ArithmeticException e) {
@@ -47,7 +50,9 @@ public class App {
                     operator = getOperator(sc);
                     num2 = getNumber(sc, "수정을 원하는 두 번째 ");
                     try {
-                        result = calculator.getValidOperator(num1, num2, operator);
+                        String s = String.valueOf(operator);
+                        OperatorType operatorType = OperatorType.valueOf(s);
+                        result = operatorType.operate(num1, num2);
                         calculatorRecord.modifyCalculation(indexModify, num1, num2, operator, result);
                     } catch (ArithmeticException e) {
                         System.out.println("오류 : " + e.getMessage());
